@@ -1,20 +1,5 @@
 import { useState } from "react";
 
-/* Функция подсчета победителя */
-function calculateWinner(squares) {}
-
-/* Компонент клетки на игровом поле */
-function Square({ value, onSquareClick }) {
-  return (
-    <button
-      onClick={onSquareClick}
-      className={value === "X" ? "square square-x" : "square square-o"}
-    >
-      {value}
-    </button>
-  );
-}
-
 /* Компонент игорового поля */
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -22,7 +7,6 @@ export default function Board() {
 
   function handleClick(i) {
     if (squares[i]) return;
-
     const nextSquares = squares.slice();
     nextSquares[i] = xIsNext ? "X" : "O";
     setSquares(nextSquares);
@@ -45,4 +29,41 @@ export default function Board() {
       </div>
     </div>
   );
+}
+
+/* Компонент клетки на игровом поле */
+function Square({ value, onSquareClick }) {
+  return (
+    <button
+      onClick={onSquareClick}
+      className={value === "X" ? "square square-x" : "square square-o"}
+    >
+      {value}
+    </button>
+  );
+}
+
+/* Функция подсчета победителя */
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [6, 4, 2],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (
+      squares[a] !== null &&
+      squares[a] === squares[b] &&
+      squares[a] === squares[c]
+    ) {
+      return squares[a];
+    }
+    return null;
+  }
 }
