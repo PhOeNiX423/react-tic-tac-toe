@@ -4,6 +4,13 @@ import { useState } from "react";
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = "Winner: " + winner;
+  } else {
+    status = "Next player is: " + (xIsNext ? "X" : "O");
+  }
 
   function handleClick(i) {
     if (squares[i]) return;
@@ -16,6 +23,9 @@ export default function Board() {
   return (
     <div className="container">
       <h1 className="page-header">React Tic-Tac-Toe</h1>
+      <div className="status">
+        <b>{status}</b>
+      </div>
       <div className="board">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -64,6 +74,6 @@ function calculateWinner(squares) {
     ) {
       return squares[a];
     }
-    return null;
   }
+  return null;
 }

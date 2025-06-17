@@ -2,6 +2,8 @@ body {
   font-family: sans-serif;
   color: white;
   background-color: #27033d;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -16,6 +18,13 @@ body {
 
 .page-header {
   font-size: calc(1.5rem + 2vw);
+  margin: 1vh 0;
+}
+
+.status {
+  font-size: calc(0.5rem + 0.9vw);
+  color: #a0a0a0;
+  margin: 0 0 3vh 0;
 }
 
 .board {
