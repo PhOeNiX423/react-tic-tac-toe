@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+  color: white;
+  background-color: #27033d;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vh;
+}
+
+.page-header {
+  font-size: calc(1.5rem + 2vw);
+}
+
+.board {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vh;
+}
+
+.square {
+  all: unset;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: calc(1.5rem + 1vw);
+  background-color: #3d1558;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 1vh;
+  cursor: pointer;
+}
+
+.square-x {
+  color: #72cff9;
+}
+
+.square-o {
+  color: #fffa46;
+}
